@@ -34,5 +34,12 @@ launch:
 	echo ">>> killing process $${pid}; output file: $${output_file}" ; \
 	kill "$${pid}"
 
+check-mysql:
+	@if [ ! "$$(mysql --help > /dev/null 2>&1; echo $$?)" -eq 0 ]; then echo ">>> ERROR: MySql not found"; exit 1; fi
+
+db: check-mysql
+	mysql -u"root" -p -e "CREATE DATABASE IF NOT EXISTS nflistener;"
+	mysql -u"root" -p -e "GRANT ALL PRIVILEGES ON nflistener.* TO 'nflistener'@'localhost' IDENTIFIED BY 'nflistener';"
+
 clean:
 	rm -f output.*.json

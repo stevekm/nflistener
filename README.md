@@ -9,3 +9,17 @@ git clone https://github.com/stevekm/nflistener.git
 cd nflistener
 make install
 ```
+
+## Database
+
+Make sure MySQL is installed. See [MySQL.md](MySQL.md) for installation notes.
+
+```
+make db
+```
+
+This will:
+
+- create a MySQL database called `nflistener` if it does not already exist
+
+- add a MySQL user with username `nflistener`, password `nflistener`, and give the account access to the `nflistener` database
