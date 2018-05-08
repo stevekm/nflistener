@@ -23,3 +23,12 @@ This will:
 - create a MySQL database called `nflistener` if it does not already exist
 
 - add a MySQL user with username `nflistener`, password `nflistener`, and give the account access to the `nflistener` database
+
+
+# Software
+
+- Java 8 and macOS/Linux with `bash` required for Nextflow
+
+- Node.js and npm (`brew install node`)
+
+- MySQL (`brew install mysql`)
