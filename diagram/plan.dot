@@ -1,0 +1,32 @@
+digraph g {
+    node [style=rounded, shape=box]
+    edge [fontname = "helvetica", fontcolor=dimgray]
+
+    DataWorkflowApp [label="Data Workflow App"]
+    Listener [label="Message Listener App"]
+    API
+    DB [label="Postgres DB"]
+    DashboardWebPage [label="Dashboard"]
+
+    subgraph cluster1 {
+        label="Backend"
+        DataWorkflowApp
+        Listener
+        API
+        DB
+    }
+
+    subgraph cluster2 {
+        label="Frontend"
+        DashboardWebPage
+    }
+
+    DataWorkflowApp -> Listener [label="status messages\nHTTP POST JSON", fontsize=12]
+    Listener -> API [label="status messages\nHTTP PUT JSON", fontsize=12]
+    API -> DB [label="status messages\nJSON", dir="both", fontsize=12]
+    Listener -> API [label="query status messages\nHTTP GET JSON", dir="both", color=blue, fontsize=12]
+    Listener -> DashboardWebPage [label="generate & serve webpage", color=blue, fontsize=12]
+    Listener -> DashboardWebPage [label="socket\nnotify on new content", color=red, fontsize=12]
+    DashboardWebPage -> Listener [label="request page refresh", color=red, fontsize=12]
+
+}
