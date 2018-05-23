@@ -1,3 +1,5 @@
+This repo is deprecated and the project has moved to: https://github.com/stevekm/nf-dashboard
+
 # nflistener
 
 Web server app to listen for HTTP POST messages output by Nextflow ([qbicsoftware](https://github.com/qbicsoftware/nextflow.git) `nfbroadcast` branch)
